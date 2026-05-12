@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Supermarket</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="street">Street/House No.</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="pincode">Pincode</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="customer_dashboard">Supermarket</string>
+    <string name="manage_products">Manage Products</string>
+    <string name="manage_orders">Manage Orders</string>
+    <string name="add_product">Add Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="cart">Cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="order_history">Order History</string>
+    <string name="profile">Profile</string>
+    <string name="cod">Cash on Delivery</string>
+    <string name="upi">UPI Payment</string>
+    <string name="low_stock_warning">Low Stock!</string>
+</resources>
