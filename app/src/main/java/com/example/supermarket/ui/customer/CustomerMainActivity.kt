@@ -94,6 +94,8 @@ class CustomerMainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
     private fun showAboutDialog() {
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle("About Fresh Mart")
