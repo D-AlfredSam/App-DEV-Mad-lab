@@ -81,6 +81,10 @@ class CustomerMainActivity : AppCompatActivity() {
                     startActivity(Intent(this, OrdersActivity::class.java))
                     true
                 }
+                com.example.supermarket.R.id.nav_about -> {
+                    showAboutDialog()
+                    true
+                }
                 com.example.supermarket.R.id.nav_logout -> {
                     authViewModel.logout()
                     startActivity(Intent(this, LoginActivity::class.java))
@@ -90,5 +94,11 @@ class CustomerMainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    private fun showAboutDialog() {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("About Fresh Mart")
+            .setMessage("Fresh Mart Supermarket\n\nAddress: 123 Market Road, City Center\nPhone: 9876543210\nWorking Hours: 9:00 AM - 10:00 PM\n\nQuality products at the best prices!")
+            .setPositiveButton("OK", null)
+            .show()
     }
 }
