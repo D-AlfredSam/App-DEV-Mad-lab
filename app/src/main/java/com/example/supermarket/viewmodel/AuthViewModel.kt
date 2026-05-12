@@ -8,6 +8,7 @@ import com.example.supermarket.data.model.User
 import com.example.supermarket.data.repository.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class AuthViewModel(
     private val repository: AuthRepository = AuthRepository()

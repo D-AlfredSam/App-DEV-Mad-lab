@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.example.supermarket.ui.admin.AdminDashboardActivity
 import com.example.supermarket.ui.customer.CustomerMainActivity
 import com.example.supermarket.viewmodel.AuthViewModel
@@ -17,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         
         // Seed initial data
-        androidx.lifecycle.lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             com.example.supermarket.utils.FirestoreSeeder.seedIfNeeded()
             authViewModel.checkUser()
         }

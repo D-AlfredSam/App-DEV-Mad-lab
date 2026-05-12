@@ -15,16 +15,15 @@ class ProductAdapter(
     class ViewHolder(val binding: ItemProductAdminBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemProductAdminBinding.inflate(LayoutInflater.from(parent.context), parent.context, false)
+        val binding = ItemProductAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = products[position]
-        holder.binding.tvProductName.text = product.name
-        holder.binding.tvCategory.text = product.category
+        holder.binding.tvName.text = product.name
         holder.binding.tvStock.text = "Stock: ${product.stock} ${product.unit}"
-        holder.binding.tvPrice.text = "₹${product.price}"
+        holder.binding.tvPrice.text = "₹${product.price} / ${product.unit}"
 
         holder.binding.btnEdit.setOnClickListener { onEdit(product) }
         holder.binding.btnDelete.setOnClickListener { onDelete(product) }

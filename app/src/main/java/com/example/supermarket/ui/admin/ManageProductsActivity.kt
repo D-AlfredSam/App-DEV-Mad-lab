@@ -2,7 +2,6 @@ package com.example.supermarket.ui.admin
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -50,8 +49,8 @@ class ManageProductsActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this).setView(dialogBinding.root)
         
         if (product != null) {
-            dialogBinding.tvTitle.text = "Edit Product"
-            dialogBinding.etProductName.setText(product.name)
+            dialogBinding.tvDialogTitle.text = "Edit Product"
+            dialogBinding.etName.setText(product.name)
             dialogBinding.etCategory.setText(product.category)
             dialogBinding.etPrice.setText(product.price.toString())
             dialogBinding.etUnit.setText(product.unit)
@@ -59,8 +58,10 @@ class ManageProductsActivity : AppCompatActivity() {
             dialogBinding.etDescription.setText(product.description)
         }
 
-        builder.setPositiveButton(if (product == null) "Add" else "Update") { _, _ ->
-            val name = dialogBinding.etProductName.text.toString()
+        val dialog = builder.create()
+        
+        dialogBinding.btnSave.setOnClickListener {
+            val name = dialogBinding.etName.text.toString()
             val category = dialogBinding.etCategory.text.toString()
             val price = dialogBinding.etPrice.text.toString().toDoubleOrNull() ?: 0.0
             val unit = dialogBinding.etUnit.text.toString()
@@ -79,10 +80,10 @@ class ManageProductsActivity : AppCompatActivity() {
                 )
                 if (product == null) viewModel.addProduct(newProduct)
                 else viewModel.updateProduct(newProduct)
+                dialog.dismiss()
             }
         }
-        builder.setNegativeButton("Cancel", null)
-        builder.show()
+        dialog.show()
     }
 
     private fun showDeleteConfirmation(product: Product) {

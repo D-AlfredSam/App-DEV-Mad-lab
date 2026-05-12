@@ -14,19 +14,19 @@ class CartAdapter(
     class ViewHolder(val binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent.context, false)
+        val binding = ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.binding.tvName.text = item.name
-        holder.binding.tvPriceInfo.text = "₹${item.price} x ${item.quantity} ${item.unit}"
+        holder.binding.tvPrice.text = "₹${item.price} x ${item.quantity} ${item.unit} = ₹${item.price * item.quantity}"
         holder.binding.tvQuantity.text = item.quantity.toString()
-        holder.binding.tvSubtotal.text = "₹${item.price * item.quantity}"
 
-        holder.binding.btnPlus.setOnClickListener { onUpdate(item.productId, item.quantity + 1) }
-        holder.binding.btnMinus.setOnClickListener { onUpdate(item.productId, item.quantity - 1) }
+        holder.binding.btnAdd.setOnClickListener { onUpdate(item.productId, item.quantity + 1) }
+        holder.binding.btnRemove.setOnClickListener { onUpdate(item.productId, item.quantity - 1) }
+        holder.binding.btnDelete.setOnClickListener { onUpdate(item.productId, 0) }
     }
 
     override fun getItemCount() = items.size
